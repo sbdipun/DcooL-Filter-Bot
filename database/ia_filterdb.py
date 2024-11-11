@@ -39,6 +39,12 @@ async def save_file(media):
     # TODO: Find better way to get same file_id for same media to avoid duplicates
     file_id, file_ref = unpack_new_file_id(media.file_id)
     file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
+
+    # Filter out files with "clean audio," "pre dvd," or "hq dvd" in their names
+    if any(keyword in file_name for keyword in ["clean audio", "pre dvd", "hq dvd"]):
+        logger.info(f"Skipping file '{file_name}' due to filter.")
+        return False, 3  # Custom status code for filtered files
+
     try:
         file = Media(
             file_id=file_id,
