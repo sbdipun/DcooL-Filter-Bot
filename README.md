@@ -188,14 +188,6 @@ Edit info.py with variables as given below then run bot
  - Thanks To [Eva Marie](https://t.me/TeamEvamaria) For Base Repo
  - Thanks To All Everyone In This Journey</b>
 
-## Note 🏷️
- 
-* [![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/KingVJ01)
-
-<b>[Note To A So Called Dev](https://telegram.dog/vj_botz): 
-
-Fork The Repo And Edit As Per Your Needs.</b>
-
 ## Disclaimer
 [![GNU Affero General Public License 2.0](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html#header)    
 <b>Licensed under [GNU AGPL 2.0.](https://github.com/Tamilupdates/Latest-Filter-Bot/blob/main/LICENSE)
