@@ -40,11 +40,6 @@ async def save_file(media):
     file_id, file_ref = unpack_new_file_id(media.file_id)
     file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
 
-    # Filter out files with "clean audio," "pre dvd," or "hq dvd" in their names
-    if any(keyword in file_name for keyword in ["clean audio", "pre dvd", "hq dvd"]):
-        logger.warning(f"Skipping file '{file_name}' due to filter.")
-        return False, 0
-
     try:
         file = Media(
             file_id=file_id,
@@ -60,6 +55,10 @@ async def save_file(media):
         return False, 2
     else:
         try:
+            # Filter out files with "clean audio," "pre dvd," or "hq dvd" in their names
+            if any(keyword in file_name for keyword in ["clean audio", "pre dvd", "hq dvd"]):
+                logger.warning(f"Skipping file '{file_name}' due to filter.")
+                return False, 0
             await file.commit()
         except DuplicateKeyError:      
             logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in database')
