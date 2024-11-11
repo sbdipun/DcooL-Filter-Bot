@@ -34,9 +34,7 @@ files = glob.glob(ppath)
 TechVJBot.start()
 loop = asyncio.get_event_loop()
 
-
 async def start():
-    print('\n')
     print('Initalizing Your Bot')
     bot_info = await TechVJBot.get_me()
     await initialize_clients()
@@ -85,4 +83,3 @@ if __name__ == '__main__':
         loop.run_until_complete(start())
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
-
