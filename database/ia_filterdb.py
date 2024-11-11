@@ -43,7 +43,7 @@ async def save_file(media):
     # Filter out files with "clean audio," "pre dvd," or "hq dvd" in their names
     if any(keyword in file_name for keyword in ["clean audio", "pre dvd", "hq dvd"]):
         logger.warning(f"Skipping file '{file_name}' due to filter.")
-        return False, 3  # Custom status code for filtered files
+        return False, 0
 
     try:
         file = Media(
