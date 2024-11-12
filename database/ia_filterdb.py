@@ -53,23 +53,22 @@ async def save_file(media):
     except ValidationError:
         logger.exception('Error occurred while saving file in database')
         return False, 2
-    else:
-        try:
-            # Keywords to filter out
-            filter_keywords = ["clean audio", "pre dvd", "hq dvd", "clean aud"]
 
-            # Check if any keyword is in file name or caption
-            if any(keyword in text for keyword in filter_keywords for text in (file_name, caption or "")):
-                logger.warning(f"Skipping file '{file_name}' due to filter.")
-                return False, 0
-            
-            await file.commit()
-        except DuplicateKeyError:      
-            logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in database')
-            return False, 0
-        else:
-            logger.info(f'{getattr(media, "file_name", "NO_FILE")} is saved to database')
-            return True, 1
+    # Define keywords to filter out
+    filter_keywords = ["clean audio", "pre dvd", "hq dvd", "clean aud"]
+
+    # Check if any keyword is present in the file name or caption
+    if any(keyword in (file_name + (file.caption or "")).lower() for keyword in filter_keywords):
+        logger.warning(f"Skipping file '{file_name}' due to filter.")
+        return False, 0
+    try:
+        await file.commit()
+    except DuplicateKeyError:      
+        logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in database')
+        return False, 0
+    else:
+        logger.info(f'{getattr(media, "file_name", "NO_FILE")} is saved to database')
+        return True, 1
 
 async def get_search_results(chat_id, query, file_type=None, max_results=10, offset=0, filter=False):
     """For given query return (results, next_offset)"""
