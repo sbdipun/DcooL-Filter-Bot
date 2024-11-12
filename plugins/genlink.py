@@ -15,7 +15,7 @@ async def allowed(_, __, message):
         return True
     return False
 
-@Client.on_message(filters.command(['link', 'plink']) & filters.create(allowed))
+@Client.on_message(filters.command(['link', 'plink']) & filters.create(allowed) & filters.user(ADMINS))
 async def gen_link_s(bot, message):
     vj = await bot.ask(chat_id = message.from_user.id, text = "Now Send Me Your Message Which You Want To Store.")
     file_type = vj.media
@@ -29,7 +29,7 @@ async def gen_link_s(bot, message):
     outstr = base64.urlsafe_b64encode(string.encode("ascii")).decode().strip("=")
     await message.reply(f"Here is your Link:\nhttps://t.me/{temp.U_NAME}?start={outstr}")    
     
-@Client.on_message(filters.command(['batch', 'pbatch']) & filters.create(allowed))
+@Client.on_message(filters.command(['batch', 'pbatch']) & filters.create(allowed) & filters.user(ADMINS))
 async def gen_link_batch(bot, message):
     if " " not in message.text:
         return await message.reply("Use correct format.\nExample <code>/batch https://t.me/VJ_Botz/10 https://t.me/VJ_Botz/20</code>.")

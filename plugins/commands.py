@@ -1018,7 +1018,7 @@ async def settings(client, message):
 
 
 
-@Client.on_message(filters.command('set_template'))
+@Client.on_message(filters.command('set_template') & filters.user(ADMINS))
 async def save_template(client, message):
     sts = await message.reply("Checking template")
     userid = message.from_user.id if message.from_user else None
@@ -1195,7 +1195,7 @@ async def deletemultiplefiles(bot, message):
         parse_mode=enums.ParseMode.HTML
     )
 
-@Client.on_message(filters.command("shortlink"))
+@Client.on_message(filters.command("shortlink") & filters.user(ADMINS))
 async def shortlink(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1229,7 +1229,7 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'is_shortlink', True)
     await reply.edit_text(f"<b>Successfully added shortlink API for {title}.\n\nCurrent Shortlink Website: <code>{shortlink_url}</code>\nCurrent API: <code>{api}</code></b>")
     
-@Client.on_message(filters.command("setshortlinkoff"))
+@Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1245,7 +1245,7 @@ async def offshortlink(bot, message):
     # ENABLE_SHORTLINK = False
     return await message.reply_text("Successfully disabled shortlink")
     
-@Client.on_message(filters.command("setshortlinkon"))
+@Client.on_message(filters.command("setshortlinkon")  & filters.user(ADMINS))
 async def onshortlink(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1261,7 +1261,7 @@ async def onshortlink(bot, message):
     # ENABLE_SHORTLINK = True
     return await message.reply_text("Successfully enabled shortlink")
 
-@Client.on_message(filters.command("shortlink_info"))
+@Client.on_message(filters.command("shortlink_info") & filters.user(ADMINS))
 async def showshortlink(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1299,7 +1299,7 @@ async def showshortlink(bot, message):
             return await message.reply_text("Shortener url and Tutorial Link Not Connected. Check this commands, /shortlink and /set_tutorial")
         
 
-@Client.on_message(filters.command("set_tutorial"))
+@Client.on_message(filters.command("set_tutorial") & filters.user(ADMINS))
 async def settutorial(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1331,7 +1331,7 @@ async def settutorial(bot, message):
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
-@Client.on_message(filters.command("remove_tutorial"))
+@Client.on_message(filters.command("remove_tutorial") & filters.user(ADMINS))
 async def removetutorial(bot, message):
     if SHORTLINK_MODE == False:
         return 
@@ -1365,7 +1365,7 @@ async def stop_button(bot, message):
     await msg.edit("**✅️ 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙴𝙳. 𝙽𝙾𝚆 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝙼𝙴**")
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@Client.on_message(filters.command("nofsub"))
+@Client.on_message(filters.command("nofsub") & filters.user(ADMINS))
 async def nofsub(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1387,7 +1387,7 @@ async def nofsub(client, message):
     await save_group_settings(grpid, 'fsub', None)
     await message.reply_text(f"<b>Successfully removed force subscribe from {title}.</b>")
 
-@Client.on_message(filters.command('fsub'))
+@Client.on_message(filters.command('fsub') & filters.user(ADMINS))
 async def fsub(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1426,7 +1426,7 @@ async def fsub(client, message):
     await message.reply_text(f"<b>Successfully set force channels for {title} to\n\n{channels}\n\nYou can remove it by /nofsub.</b>")
         
 
-@Client.on_message(filters.command("add_premium"))
+@Client.on_message(filters.command("add_premium") & filters.user(ADMINS))
 async def give_premium_cmd_handler(client, message):
     if PREMIUM_AND_REFERAL_MODE == False:
         return 
@@ -1452,7 +1452,7 @@ async def give_premium_cmd_handler(client, message):
     else:
         await message.reply_text("<b>Usage: /add_premium user_id time \n\nExample /add_premium 1252789 10day \n\n(e.g. for time units '1day for days', '1hour for hours', or '1min for minutes', or '1month for months' or '1year for year')</b>")
         
-@Client.on_message(filters.command("remove_premium"))
+@Client.on_message(filters.command("remove_premium") & filters.user(ADMINS))
 async def remove_premium_cmd_handler(client, message):
     if PREMIUM_AND_REFERAL_MODE == False:
         return 
