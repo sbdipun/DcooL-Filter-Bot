@@ -7,7 +7,7 @@ from pymongo.errors import DuplicateKeyError
 from umongo import Instance, Document, fields
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
-from info import FILE_DB_URI, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN
+from info import FILE_DB_URI, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN, FILTER_KEYWORDS
 from utils import get_settings, save_group_settings
 
 logger = logging.getLogger(__name__)
@@ -54,11 +54,8 @@ async def save_file(media):
         logger.exception('Error occurred while saving file in database')
         return False, 2
 
-    # Define keywords to filter out
-    filter_keywords = ["clean audio", "pre dvd", "hq dvd", "clean aud"]
-
     # Check if any keyword is present in the file name or caption
-    if any(keyword in (file_name + (file.caption or "")).lower() for keyword in filter_keywords):
+    if any(keyword in (file_name + (file.caption or "")).lower() for keyword in FILTER_KEYWORDS):
         logger.warning(f"Skipping file '{file_name}' due to filter.")
         return False, 0
     try:
