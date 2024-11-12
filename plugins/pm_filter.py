@@ -2045,33 +2045,33 @@ async def cb_handler(client: Client, query: CallbackQuery):
             [InlineKeyboardButton('⚙️ Aᴅᴍɪɴ Oɴʟʏ 🔧', callback_data='admin')]
         ]   
     
-    if STREAM_MODE == True:
-        buttons.append([InlineKeyboardButton('Sᴛʀᴇᴀᴍ/Dᴏᴡɴʟᴏᴀᴅ', callback_data='s_txt')])
-    
-    if RENAME_MODE == True:
-        buttons.append([InlineKeyboardButton('Rᴇɴᴀᴍᴇ', callback_data='r_txt')])
-    
-    # Add remaining buttons
-    buttons.extend([
-        [
-            InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='store_file'),
-             InlineKeyboardButton('Tᴇʟᴇɢʀᴀᴘʜ', callback_data='tele') 
-         ], [ 
-             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴꜱ', callback_data='coct'), 
-             InlineKeyboardButton('Fɪʟᴛᴇʀꜱ', callback_data='filters')
-         ], [
-             InlineKeyboardButton('Yᴛ-Dʟ', callback_data='ytdl'), 
-             InlineKeyboardButton('Sʜᴀʀᴇ Tᴇxᴛ', callback_data='share')
-         ], [
-             InlineKeyboardButton('Sᴏɴɢ', callback_data='song'),
-             InlineKeyboardButton('Eᴀʀɴ Mᴏɴᴇʏ', callback_data='shortlink_info')
-         ], [
-             InlineKeyboardButton('Sᴛɪᴄᴋᴇʀ-ɪᴅ', callback_data='sticker'),
-             InlineKeyboardButton('J-ꜱᴏɴ', callback_data='json')
-         ], [             
-             InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 🏠', callback_data='start')
-        ]
-    ])
+        if STREAM_MODE == True:
+            buttons.append([InlineKeyboardButton('Sᴛʀᴇᴀᴍ/Dᴏᴡɴʟᴏᴀᴅ', callback_data='s_txt')])
+        
+        if RENAME_MODE == True:
+            buttons.append([InlineKeyboardButton('Rᴇɴᴀᴍᴇ', callback_data='r_txt')])
+        
+        # Add remaining buttons
+        buttons.extend([
+            [
+                InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='store_file'),
+                InlineKeyboardButton('Tᴇʟᴇɢʀᴀᴘʜ', callback_data='tele') 
+            ], [ 
+                InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴꜱ', callback_data='coct'), 
+                InlineKeyboardButton('Fɪʟᴛᴇʀꜱ', callback_data='filters')
+            ], [
+                InlineKeyboardButton('Yᴛ-Dʟ', callback_data='ytdl'), 
+                InlineKeyboardButton('Sʜᴀʀᴇ Tᴇxᴛ', callback_data='share')
+            ], [
+                InlineKeyboardButton('Sᴏɴɢ', callback_data='song'),
+                InlineKeyboardButton('Eᴀʀɴ Mᴏɴᴇʏ', callback_data='shortlink_info')
+            ], [
+                InlineKeyboardButton('Sᴛɪᴄᴋᴇʀ-ɪᴅ', callback_data='sticker'),
+                InlineKeyboardButton('J-ꜱᴏɴ', callback_data='json')
+            ], [             
+                InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 🏠', callback_data='start')
+            ]
+        ])
 
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -3462,3 +3462,4 @@ async def global_filters(client, message, text=False):
                 break
     else:
         return False
+        
