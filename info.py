@@ -62,8 +62,8 @@ else:
 DATABASE_NAME = environ.get('DATABASE_NAME', "techvjautobot")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'techvjcollection')
 
-# Filter Keywords for Unwanted Files (e.g., "Pre DVD")
-filter_keywords = os.environ.get('FILTER_KEYWORDS', "clean audio,pre dvd,hq dvd,clean aud,dvdscr").split(',')
+# Filter Keywords for Unwanted Files (e.g., "PreDVD")
+filter_keywords = environ.get('FILTER_KEYWORDS', "Clean Aud,PreDVD,DVDScr").split(',')
 FILTER_KEYWORDS = [keyword.strip().lower() for keyword in filter_keywords]
 
 # Premium And Referal Settings
