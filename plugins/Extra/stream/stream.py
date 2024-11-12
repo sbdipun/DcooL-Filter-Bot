@@ -40,8 +40,8 @@ async def stream_start(client, message):
         rm=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("sᴛʀᴇᴀᴍ 🖥", url=stream),
-                    InlineKeyboardButton('ᴅᴏᴡɴʟᴏᴀᴅ 📥', url=download)
+                    InlineKeyboardButton("Sᴛʀᴇᴀᴍ 🖥", url=stream),
+                    InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ 📥', url=download)
                 ]
             ] 
         )
