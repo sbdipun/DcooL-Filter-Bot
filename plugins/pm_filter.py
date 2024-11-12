@@ -2045,10 +2045,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             [InlineKeyboardButton('⚙️ Aᴅᴍɪɴ Oɴʟʏ 🔧', callback_data='admin')]
         ]   
     
-    if STREAM_MODE:
+    if STREAM_MODE == True:
         buttons.append([InlineKeyboardButton('Sᴛʀᴇᴀᴍ/Dᴏᴡɴʟᴏᴀᴅ', callback_data='s_txt')])
     
-    if RENAME_MODE:
+    if RENAME_MODE == True:
         buttons.append([InlineKeyboardButton('Rᴇɴᴀᴍᴇ', callback_data='r_txt')])
     
     # Add remaining buttons
