@@ -55,10 +55,14 @@ async def save_file(media):
         return False, 2
     else:
         try:
-            # Filter out files with "clean audio," "pre dvd," or "hq dvd" in their names
-            if any(keyword in file_name for keyword in ["clean audio", "pre dvd", "hq dvd"]):
+            # Keywords to filter out
+            filter_keywords = ["clean audio", "pre dvd", "hq dvd", "clean aud"]
+
+            # Check if any keyword is in file name or caption
+            if any(keyword in text for keyword in filter_keywords for text in (file_name, caption or "")):
                 logger.warning(f"Skipping file '{file_name}' due to filter.")
-                return False, 0
+                return False, 0  # Custom status code for filtered files
+            
             await file.commit()
         except DuplicateKeyError:      
             logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in database')
