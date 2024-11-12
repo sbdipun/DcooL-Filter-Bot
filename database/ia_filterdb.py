@@ -61,7 +61,7 @@ async def save_file(media):
             # Check if any keyword is in file name or caption
             if any(keyword in text for keyword in filter_keywords for text in (file_name, caption or "")):
                 logger.warning(f"Skipping file '{file_name}' due to filter.")
-                return False, 0  # Custom status code for filtered files
+                return False, 0
             
             await file.commit()
         except DuplicateKeyError:      
