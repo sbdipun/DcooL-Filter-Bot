@@ -1,4 +1,4 @@
-from info import API_ID, API_HASH, CLONE_MODE, LOG_CHANNEL
+from info import API_ID, API_HASH, ADMINS, CLONE_MODE, LOG_CHANNEL
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from database.users_chats_db import db
