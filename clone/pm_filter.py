@@ -24,9 +24,19 @@ SPELL_CHECK = {}
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
+    content = message.text
+    user = message.from_user.first_name
+    user_id = message.from_user.id
+    if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
+    ai_search = True
+    reply_msg = await bot.send_message(message.from_user.id, f"<b><i>Searching For {content} 🔍</i></b>", reply_to_message_id=message.id)
+    await auto_filter(bot, content, message, reply_msg, ai_search)
+    
+    '''
     ai_search = True
     reply_msg = await message.reply_text(f"<b><i>Searching For {message.text} 🔍</i></b>")
     await auto_filter(client, message.text, message, reply_msg, ai_search)
+    '''
             
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
