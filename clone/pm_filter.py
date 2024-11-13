@@ -31,7 +31,6 @@ async def give_filter(client, message):
     ai_search = True
     reply_msg = await bot.send_message(message.from_user.id, f"<b><i>Searching For {content} 🔍</i></b>", reply_to_message_id=message.id)
     await auto_filter(bot, content, message, reply_msg, ai_search)
-    
     '''
     ai_search = True
     reply_msg = await message.reply_text(f"<b><i>Searching For {message.text} 🔍</i></b>")
