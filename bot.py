@@ -86,8 +86,8 @@ async def restart_loop():
             break
         except Exception as e:
             logging.error(f"Error occurred: {e}")
-        #logging.info("Restarting in 10 Seconds...")
-        await asyncio.sleep(10)  # 30 minutes delay
+        #logging.info("Restarting in 30 minutes...")
+        await asyncio.sleep(3600)  # 30 minutes delay
 
 if __name__ == '__main__':
     try:
