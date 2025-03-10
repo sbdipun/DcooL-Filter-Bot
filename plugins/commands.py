@@ -81,10 +81,10 @@ async def start(client, message):
     
     if UPDATES_CHANNEL and not await is_subscribed(client, message):
         try:
-            if REQUEST_TO_JOIN_MODE:
-                invite_link = await client.create_chat_invite_link(chat_id=int(random.choice(UPDATES_CHANNEL)), creates_join_request=True)
+            if REQUEST_TO_JOIN_MODE == True:
+                invite_link = await client.create_chat_invite_link(chat_id=(int(UPDATES_CHANNEL)), creates_join_request=True)
             else:
-                invite_link = await client.create_chat_invite_link(int(random.choice(UPDATES_CHANNEL)))
+                invite_link = await client.create_chat_invite_link(int(UPDATES_CHANNEL))
         except ChatAdminRequired:
             await message.reply_text("Make sure Bot is admin in Forcesub channel")
             return
