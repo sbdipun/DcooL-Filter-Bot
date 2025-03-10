@@ -67,7 +67,7 @@ async def is_subscribed(bot, query):
                 return True
             else:
                 try:
-                    user_data = await bot.get_chat_member(UPDATES_CHANNEL, query.from_user.id)
+                    user_data = await bot.get_chat_member(get_random_channel_id(), query.from_user.id)
                 except UserNotParticipant:
                     pass
                 except Exception as e:
@@ -80,7 +80,7 @@ async def is_subscribed(bot, query):
             return False
     else:
         try:
-            user = await bot.get_chat_member(UPDATES_CHANNEL, query.from_user.id)
+            user = await bot.get_chat_member(get_random_channel_id(), query.from_user.id)
         except UserNotParticipant:
             pass
         except Exception as e:
