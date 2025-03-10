@@ -76,21 +76,10 @@ async def start():
     bind_address = "0.0.0.0"
     await web.TCPSite(app, bind_address, PORT).start()
     await idle()
-
-async def restart_loop():
-    while True:
-        try:
-            await start()
-        except KeyboardInterrupt:
-            logging.info('Service Stopped Bye 👋')
-            break
-        except Exception as e:
-            logging.error(f"Error occurred: {e}")
-        #logging.info("Restarting in 30 minutes...")
-        await asyncio.sleep(3600)  # 30 minutes delay
+    await asyncio.sleep(10)  # 30 minutes delay
 
 if __name__ == '__main__':
     try:
-        loop.run_until_complete(restart_loop())
+        loop.run_until_complete(start())
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
