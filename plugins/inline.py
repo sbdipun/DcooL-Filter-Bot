@@ -8,7 +8,7 @@ from info import CACHE_TIME, AUTH_USERS, UPDATES_CHANNEL, CUSTOM_FILE_CAPTION
 from database.connections_mdb import active_connection
 
 logger = logging.getLogger(__name__)
-cache_time = 0 if AUTH_USERS or UPDATES_CHANNEL() else CACHE_TIME
+cache_time = 0 if AUTH_USERS or UPDATES_CHANNEL else CACHE_TIME
 
 async def inline_users(query: InlineQuery):
     if AUTH_USERS:
@@ -32,7 +32,7 @@ async def answer(bot, query):
                            switch_pm_parameter="hehe")
         return
 
-    if UPDATES_CHANNEL() and not await is_subscribed(bot, query):
+    if UPDATES_CHANNEL and not await is_subscribed(bot, query):
         await query.answer(results=[],
                            cache_time=0,
                            switch_pm_text='You have to subscribe my channel to use the bot',

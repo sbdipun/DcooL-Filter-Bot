@@ -7,7 +7,7 @@ class JoinReqs:
         if OTHER_DB_URI:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(OTHER_DB_URI)
             self.db = self.client["JoinReqs"]
-            self.col = self.db[str(UPDATES_CHANNEL())]
+            self.col = self.db[str(UPDATES_CHANNEL)]
         else:
             self.client = None
             self.db = None
