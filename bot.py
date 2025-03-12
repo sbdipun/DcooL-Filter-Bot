@@ -79,9 +79,7 @@ async def start():
 
 async def restart_loop():
     try:
-        #await asyncio.wait_for(start(), timeout=1800)
-        await start()
-        await asyncio.sleep(60)
+        await asyncio.wait_for(start(), timeout=60)
         logging.info('🔄 Next Restart for in 1 minute..')
         os.execl(sys.executable, sys.executable, *sys.argv)
         #os.execl(sys.executable, sys.executable, "python3", "get_config.py", "&&", "python3", "bot.py")
