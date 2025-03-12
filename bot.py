@@ -87,7 +87,6 @@ async def restart_loop():
         logging.info('✅ Restart Done')
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
-        break
     except Exception as e:
         logging.error(f"Error occurred: {e}")
 
