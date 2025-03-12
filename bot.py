@@ -80,7 +80,9 @@ async def start():
 async def restart_loop():
     while True:
         try:
-            await asyncio.wait_for(start(), timeout=1800)
+            #await asyncio.wait_for(start(), timeout=1800)
+            await asyncio.sleep(60)
+            os.execl(sys.executable, sys.executable, *sys.argv)
             logging.info('Next Restart 30 Minutes..')
         except KeyboardInterrupt:
             logging.info('Service Stopped Bye 👋')
