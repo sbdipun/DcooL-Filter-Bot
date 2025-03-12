@@ -1,4 +1,4 @@
-import sys, glob, importlib, logging, logging.config, pytz, asyncio
+import os, sys, glob, importlib, logging, logging.config, pytz, asyncio
 from pathlib import Path
 
 # Get logging configurations
@@ -83,7 +83,7 @@ async def restart_loop():
             #await asyncio.wait_for(start(), timeout=1800)
             await asyncio.sleep(60)
             os.execl(sys.executable, sys.executable, *sys.argv)
-            logging.info('Next Restart 30 Minutes..')
+            logging.info('Next Restart 1 Minute..')
         except KeyboardInterrupt:
             logging.info('Service Stopped Bye 👋')
             break
