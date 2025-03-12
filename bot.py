@@ -83,7 +83,6 @@ async def restart_loop():
         logging.info('🔄 Next Restart for in 1 minute..')
         os.execl(sys.executable, sys.executable, *sys.argv)
         #os.execl(sys.executable, sys.executable, "python3", "get_config.py", "&&", "python3", "bot.py")
-        logging.info('✅ Restart Done')
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
     except Exception as e:
