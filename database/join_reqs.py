@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-from info import get_random_channel_id, OTHER_DB_URI
+from info import UPDATES_CHANNEL, OTHER_DB_URI
 
 class JoinReqs:
 
@@ -7,7 +7,7 @@ class JoinReqs:
         if OTHER_DB_URI:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(OTHER_DB_URI)
             self.db = self.client["JoinReqs"]
-            self.col = self.db[str(get_random_channel_id())]
+            self.col = self.db[str(UPDATES_CHANNEL())]
         else:
             self.client = None
             self.db = None
