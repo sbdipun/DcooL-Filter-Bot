@@ -81,8 +81,8 @@ async def restart_loop():
     try:
         await asyncio.wait_for(start(), timeout=10)
         print('🔄 Next Restart for in 10 seconds..')
-        # os.execl(sys.executable, sys.executable, *sys.argv)
-        os.execl(sys.executable, sys.executable, "python3", "get_config.py", "&&", "python3", "bot.py")
+        os.system("python3 get_config.py")      
+        os.execl(sys.executable, sys.executable, *sys.argv)
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
     except Exception as e:
