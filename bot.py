@@ -78,17 +78,18 @@ async def start():
     await idle()
 
 async def restart_loop():
-    while True:
-        try:
-            #await asyncio.wait_for(start(), timeout=1800)
-            await asyncio.sleep(60)
-            os.execl(sys.executable, sys.executable, *sys.argv)
-            logging.info('Next Restart 1 Minute..')
-        except KeyboardInterrupt:
-            logging.info('Service Stopped Bye 👋')
-            break
-        except Exception as e:
-            logging.error(f"Error occurred: {e}")
+    try:
+        #await asyncio.wait_for(start(), timeout=1800)
+        await asyncio.sleep(60)
+        logging.info('🔄 Next Restart 1 Minute..')
+        os.execl(sys.executable, sys.executable, *sys.argv)
+        #os.execl(sys.executable, sys.executable, "python3", "get_config.py", "&&", "python3", "bot.py")
+        logging.info('✅ Restart Done')
+    except KeyboardInterrupt:
+        logging.info('Service Stopped Bye 👋')
+        break
+    except Exception as e:
+        logging.error(f"Error occurred: {e}")
 
 if __name__ == '__main__':
     try:
