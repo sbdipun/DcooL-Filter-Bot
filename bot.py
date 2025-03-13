@@ -79,8 +79,8 @@ async def start():
 
 async def restart_loop():
     try:
-        await asyncio.wait_for(start(), timeout=1*10*60)
-        print('🔄 Next Restart for in 10 minutes..')
+        await asyncio.wait_for(start(), timeout=1*30*60)
+        print('🔄 Next Restart for in 30 minutes..')
         
         #os.system("python3 get_config.py")
         os.execl(sys.executable, sys.executable, *sys.argv)
