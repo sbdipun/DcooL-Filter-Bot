@@ -90,7 +90,7 @@ async def start(client, message):
             return
         try:
             btn = [[
-                InlineKeyboardButton("❆ Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ ❆", url=invite_link.invite_link)
+                InlineKeyboardButton("🔥 Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ 🔥", url=invite_link.invite_link)
             ]]
             if message.command[1] != "subscribe":
                 if REQUEST_TO_JOIN_MODE == True:
