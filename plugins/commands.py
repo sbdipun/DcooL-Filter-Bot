@@ -1362,7 +1362,7 @@ async def stop_button(bot, message):
     #os.system("python3 get_config.py")      
     await asyncio.sleep(3)
     await msg.edit("**✅️ 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙴𝙳. 𝙽𝙾𝚆 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝙼𝙴**")
-    os.execl(sys.executable, sys.executable, "python3 get_config.py && python3 bot.py")
+    os.execl(sys.executable, sys.executable, "get_config.py && bot.py")
     #os.execl(sys.executable, sys.executable, *sys.argv)
 
 @Client.on_message(filters.command("nofsub") & filters.user(ADMINS))
