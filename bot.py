@@ -16,7 +16,6 @@ logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 from pyrogram import Client, idle
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import *
 from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from script import script
@@ -28,6 +27,30 @@ from plugins.clone import restart_bots
 from stream.bot import TechVJBot
 from stream.util.keepalive import ping_server
 from stream.bot.clients import initialize_clients
+
+from requests import get as rget
+from os import environ
+
+CONFIG_FILE_URL = environ.get('CONFIG_FILE_URL')
+try:
+    if not CONFIG_FILE_URL:
+        raise ValueError("CONFIG_FILE_URL is missing or empty")
+
+    res = rget(CONFIG_FILE_URL)
+
+    if res.status_code == 200:
+        # Write the content to info.py file
+        with open('info.py', 'wb+') as f:
+            f.write(res.content)
+        logging.info("info.py downloaded successfully!")
+    else:
+        logging.error(f"Failed to download info.py: {res.status_code}")
+except Exception as e:
+    logging.error(f"Error downloading CONFIG_FILE_URL: {e}")
+
+
+# Import info.py after downloading
+from info import *
 
 ppath = "plugins/*.py"
 files = glob.glob(ppath)
