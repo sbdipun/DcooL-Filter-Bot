@@ -13,21 +13,6 @@ logging.basicConfig(
 logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
-from pyrogram import Client, idle
-from database.ia_filterdb import Media
-from database.users_chats_db import db
-from utils import temp
-from typing import Union, Optional, AsyncGenerator
-from script import script
-from datetime import date, datetime 
-from aiohttp import web
-from plugins import web_server
-from plugins.clone import restart_bots
-
-from stream.bot import TechVJBot
-from stream.util.keepalive import ping_server
-from stream.bot.clients import initialize_clients
-
 from requests import get as rget
 from os import environ
 
@@ -48,9 +33,24 @@ try:
 except Exception as e:
     logging.error(f"Error downloading CONFIG_FILE_URL: {e}")
 
-
 # Import info.py after downloading
 from info import *
+
+from pyrogram import Client, idle
+from database.ia_filterdb import Media
+from database.users_chats_db import db
+from utils import temp
+from typing import Union, Optional, AsyncGenerator
+from script import script
+from datetime import date, datetime 
+from aiohttp import web
+from plugins import web_server
+from plugins.clone import restart_bots
+
+from stream.bot import TechVJBot
+from stream.util.keepalive import ping_server
+from stream.bot.clients import initialize_clients
+
 
 ppath = "plugins/*.py"
 files = glob.glob(ppath)
