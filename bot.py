@@ -101,16 +101,19 @@ async def start():
     await idle()
 
 async def restart_loop():
-    try:
-        await asyncio.wait_for(start(), timeout=1*30*60)
-        print('🔄 Next Restart for in 30 minutes..')
-        
-        #os.system("python3 get_config.py")
-        os.execl(sys.executable, sys.executable, *sys.argv)
-    except KeyboardInterrupt:
-        logging.info('Service Stopped Bye 👋')
-    except Exception as e:
-        logging.error(f"Error occurred: {e}")
+    if RANDOM_UPDATES == True:
+        try:
+            await asyncio.wait_for(start(), timeout=1*30*60)
+            print('🔄 Next Restart for in 30 minutes..')
+            
+            #os.system("python3 get_config.py")
+            os.execl(sys.executable, sys.executable, *sys.argv)
+        except KeyboardInterrupt:
+            logging.info('Service Stopped Bye 👋')
+        except Exception as e:
+            logging.error(f"Error occurred: {e}")
+    else:
+        await start()
 
 if __name__ == '__main__':
     try:
